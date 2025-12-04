@@ -1,0 +1,24 @@
+/* Custom CSS for Mobile Recharge App */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Card hover effect */
+.plan-card:hover {
+  transform: scale(1.03);
+  transition: 0.2s ease-in-out;
+}
+
+/* Navbar shadow */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Gradient button */
+.btn-gradient {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  color: white;
+}
+.btn-gradient:hover {
+  opacity: 0.9;
+}

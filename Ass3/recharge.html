@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recharge Now</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-100">
+
+  <nav class="navbar bg-white p-4 flex justify-between">
+    <h1 class="text-xl font-bold text-blue-600">RechargeNow</h1>
+    <a href="index.html" class="text-gray-600">Home</a>
+  </nav>
+
+  <div class="max-w-md mx-auto bg-white mt-10 p-6 rounded-xl shadow">
+
+    <h2 class="text-2xl font-bold text-center">Recharge Mobile</h2>
+
+    <form action="success.html" class="mt-6">
+      <label class="font-semibold">Mobile Number:</label>
+      <input type="text" required class="w-full border p-2 rounded mt-1">
+
+      <label class="font-semibold mt-4 block">Operator:</label>
+      <select class="w-full border p-2 rounded mt-1">
+        <option>Airtel</option>
+        <option>Jio</option>
+        <option>VI</option>
+        <option>BSNL</option>
+      </select>
+
+      <label class="font-semibold mt-4 block">Amount:</label>
+      <input type="number" required class="w-full border p-2 rounded mt-1">
+
+      <button class="btn-gradient w-full py-3 mt-6 rounded-xl text-white">
+        Proceed to Pay
+      </button>
+    </form>
+
+  </div>
+
+</body>
+</html>
