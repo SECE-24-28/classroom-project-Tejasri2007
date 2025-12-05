@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Recharge - Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RechargeNow - Home</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-50">
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav class="navbar bg-white p-4 flex justify-between">
-    <h1 class="text-xl font-bold text-blue-600">RechargeNow</h1>
-    <a href="index.html" class="text-gray-600">Home</a>
+    <h1 class="text-xl font-bold text-blue-700">
+      <a href="index.html">RechargeNow</a>
+    </h1>
+
+    <div class="flex gap-6">
+      <a href="index.html" class="text-gray-700">Home</a>
+      <a href="plans.html" class="text-gray-700">Plans</a>
+      <a href="recharge.html" class="text-gray-700">Recharge</a>
+      <a href="login.html" class="text-gray-700">Login</a>
+    </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="text-center mt-10">
-    <h2 class="text-3xl font-bold">Fast & Easy Mobile Recharge</h2>
-    <p class="text-gray-600 mt-2">Recharge prepaid numbers instantly</p>
+  <div class="max-w-4xl mx-auto mt-8 p-4">
+    <h2 class="text-2xl font-bold text-blue-700">Welcome User 👋</h2>
+    <p class="text-gray-600 mt-1">Choose an option to continue</p>
 
-    <a href="recharge.html">
-      <button class="btn-gradient px-6 py-3 rounded-full mt-6">Recharge Now</button>
-    </a>
-  </section>
+    <div class="grid grid-cols-2 gap-6 mt-8">
 
-  <!-- Features -->
-  <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
-    <div class="bg-white p-4 rounded-xl shadow">
-      <h3 class="font-bold text-lg">Instant Recharge</h3>
-      <p class="text-gray-600 mt-2">Recharge within seconds.</p>
-    </div>
-    <div class="bg-white p-4 rounded-xl shadow">
-      <h3 class="font-bold text-lg">Secure Payments</h3>
-      <p class="text-gray-600 mt-2">Your data is always safe.</p>
-    </div>
-    <div class="bg-white p-4 rounded-xl shadow">
-      <h3 class="font-bold text-lg">Best Offers</h3>
-      <p class="text-gray-600 mt-2">Get exclusive cashback & discounts.</p>
+      <a href="recharge.html" class="bg-white p-8 rounded-2xl shadow card-hover text-center">
+        <h3 class="text-xl font-bold text-blue-600">Recharge Now</h3>
+        <p class="text-gray-600 mt-2">Mobile, DTH, Prepaid</p>
+      </a>
+
+      <a href="plans.html" class="bg-white p-8 rounded-2xl shadow card-hover text-center">
+        <h3 class="text-xl font-bold text-blue-600">View Plans</h3>
+        <p class="text-gray-600 mt-2">All Operators</p>
+      </a>
+
     </div>
   </div>
-
 </body>
 </html>
