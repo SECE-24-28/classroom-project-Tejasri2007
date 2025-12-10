@@ -1,0 +1,13 @@
+/* small helper styles */
+body.dark {
+  background-color: #0b1220 !important;
+  color: #dbeafe;
+}
+
+/* Ensure img/icon fallback */
+.plan-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+}

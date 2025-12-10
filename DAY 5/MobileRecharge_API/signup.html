@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup - RechargeKart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/script.js"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-white">
+
+<div class="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+  <h2 class="text-2xl font-bold mb-6 text-center">Signup for RechargeKart</h2>
+
+  <form onsubmit="signupValidate(event)" class="space-y-4">
+    <div>
+      <label>Name</label>
+      <input id="signupName" type="text" class="w-full border px-4 py-2 rounded" placeholder="Enter name">
+    </div>
+    <div>
+      <label>Email</label>
+      <input id="signupEmail" type="email" class="w-full border px-4 py-2 rounded" placeholder="Enter email">
+    </div>
+    <div>
+      <label>Password</label>
+      <input id="signupPass" type="password" class="w-full border px-4 py-2 rounded" placeholder="Enter password">
+    </div>
+    <div>
+      <input type="checkbox" id="agree">
+      <label for="agree">I agree to terms & conditions</label>
+    </div>
+    <button class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Signup</button>
+  </form>
+
+  <p class="text-sm mt-4 text-center">Already have an account? 
+    <a href="index.html" class="text-green-600 hover:underline">Login</a>
+  </p>
+</div>
+
+</body>
+</html>

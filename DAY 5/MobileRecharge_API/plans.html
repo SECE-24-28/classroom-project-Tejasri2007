@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recharge Plans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom JS -->
+  <script src="assets/script.js" defer></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 to-white">
+
+<!-- HEADER -->
+<header class="bg-indigo-700 text-white">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">RechargeKart</h1>
+    <nav class="space-x-4 text-sm">
+      <a href="recharge.html" class="hover:underline">Home</a>
+      <a href="discounts.html" class="hover:underline">Discounts</a>
+      <a href="history.html" class="hover:underline">History</a>
+      <a href="#" onclick="sessionStorage.clear(); location.href='index.html'">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="container mx-auto px-4 py-8">
+  <h2 class="text-3xl font-bold mb-6">Mobile Recharge Plans</h2>
+
+  <!-- Operator Filter -->
+  <div class="mb-6 max-w-xs">
+    <label class="block mb-2 font-semibold">Select Operator</label>
+    <select id="operatorSelect" onchange="filterPlans()" class="w-full border px-4 py-2 rounded">
+      <option value="all">All Operators</option>
+      <option value="Jio">Jio</option>
+      <option value="Airtel">Airtel</option>
+      <option value="Vi">Vi</option>
+      <option value="BSNL">BSNL</option>
+    </select>
+  </div>
+
+  <!-- Plans Container -->
+  <div id="plansContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <p id="loading" class="text-gray-600 col-span-full">Loading plans...</p>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-indigo-700 text-white text-center py-4 mt-10">
+  © 2025 RechargeKart | Secure Recharge
+</footer>
+
+<!-- INLINE SCRIPT TO FETCH PLANS -->
+<script>
+let plansData = [];
+
+// Fetch plans from MockAPI
+async function fetchPlans() {
+  try {
+    const res = await fetch('https://693843ef4618a71d77cf9bb9.mockapi.io/Plans'); // <-- Replace with your MockAPI URL
+    plansData = await res.json();
+    renderPlans();
+  } catch (err) {
+    document.getElementById('plansContainer').innerHTML =
+      '<p class="text-red-500 col-span-full">Failed to load plans. Try again.</p>';
+    console.error(err);
+  }
+}
+
+// Render plans dynamically
+function renderPlans() {
+  const container = document.getElementById('plansContainer');
+  const operator = document.getElementById('operatorSelect').value;
+  container.innerHTML = '';
+
+  const filtered = operator === 'all' ? plansData : plansData.filter(p => p.operator === operator);
+
+  if(filtered.length === 0){
+    container.innerHTML = '<p class="text-gray-600 col-span-full">No plans available</p>';
+    return;
+  }
+
+  filtered.forEach(plan => {
+    const card = document.createElement('div');
+    card.className = 'bg-white p-6 rounded-xl shadow card';
+    card.innerHTML = `
+      <h3 class="text-xl font-bold mb-2">₹${plan.price}</h3>
+      <p class="text-sm text-gray-600 mb-1">${plan.operator} - ${plan.type}</p>
+      <p class="text-sm mb-1">Data: ${plan.data}</p>
+      <p class="text-sm mb-1">Validity: ${plan.validity}</p>
+      <p class="text-sm mb-4">${plan.description}</p>
+      <button onclick='selectPlan(${JSON.stringify(plan)})' class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">Recharge Now</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Filter by operator
+function filterPlans() {
+  renderPlans();
+}
+
+// Select a plan and go to payment
+function selectPlan(plan) {
+  const planDetails = `
+Selected Plan:
+Operator: ${plan.operator}
+Type: ${plan.type}
+Price: ₹${plan.price}
+Data: ${plan.data}
+Validity: ${plan.validity}
+`;
+  if(confirm(planDetails + "\nProceed to payment?")) {
+    window.location.href = `payment.html?amount=${plan.price}&operator=${plan.operator}&planId=${plan.id}`;
+  }
+}
+
+// Initial fetch
+fetchPlans();
+</script>
+
+</body>
+</html>

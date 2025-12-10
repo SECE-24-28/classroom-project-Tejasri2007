@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - RechargeKart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/script.js"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-white">
+
+<div class="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+  <h2 class="text-2xl font-bold mb-6 text-center">Login to RechargeKart</h2>
+
+  <form onsubmit="loginValidate(event)" class="space-y-4">
+    <div>
+      <label>Email</label>
+      <input id="loginEmail" type="email" class="w-full border px-4 py-2 rounded" placeholder="Enter email">
+    </div>
+    <div>
+      <label>Password</label>
+      <input id="loginPass" type="password" class="w-full border px-4 py-2 rounded" placeholder="Enter password">
+    </div>
+    <p id="loginMsg" class="text-red-500 hidden text-sm"></p>
+    <button class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">Login</button>
+  </form>
+
+  <p class="text-sm mt-4 text-center">Don't have an account? 
+    <a href="signup.html" class="text-indigo-600 hover:underline">Signup</a>
+  </p>
+</div>
+
+</body>
+</html>
