@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recharge Plans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 to-white">
+
+<script>
+  if (!sessionStorage.getItem("loggedUser")) window.location.href="index.html";
+</script>
+
+<header class="bg-indigo-700 text-white">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">RechargeKart</h1>
+    <nav class="space-x-4 text-sm">
+      <a href="recharge.html" class="hover:underline">Home</a>
+      <a href="discounts.html" class="hover:underline">Discounts</a>
+      <a href="history.html" class="hover:underline">History</a>
+      <a href="#" onclick="sessionStorage.clear(); location.href='index.html'">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container mx-auto px-4 py-8">
+  <h2 class="text-3xl font-bold mb-6">Mobile Recharge Plans</h2>
+
+  <div class="mb-6 max-w-xs">
+    <label>Select Operator</label>
+    <select id="operatorSelect" onchange="renderPlans()" class="w-full border px-4 py-2 rounded">
+      <option value="all">All Operators</option>
+      <option value="Jio">Jio</option>
+      <option value="Airtel">Airtel</option>
+      <option value="Vi">Vi</option>
+      <option value="BSNL">BSNL</option>
+    </select>
+  </div>
+
+  <div id="plansContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</main>
+
+<footer class="bg-indigo-700 text-white text-center py-4 mt-10">
+  © 2025 RechargeKart | Secure Recharge
+</footer>
+
+<script>
+const PLANS = [
+  { id:1, operator:"Jio", price:199, data:"1.5GB/day", validity:"28 days" },
+  { id:2, operator:"Jio", price:599, data:"2GB/day", validity:"84 days" },
+  { id:3, operator:"Airtel", price:249, data:"2GB/day", validity:"28 days" },
+  { id:4, operator:"Airtel", price:499, data:"2.5GB/day", validity:"84 days" },
+  { id:5, operator:"Vi", price:299, data:"2GB/day", validity:"28 days" },
+  { id:6, operator:"Vi", price:719, data:"1.5GB/day", validity:"84 days" },
+  { id:7, operator:"BSNL", price:159, data:"1GB/day", validity:"28 days" },
+  { id:8, operator:"BSNL", price:399, data:"2GB/day", validity:"84 days" }
+];
+
+function renderPlans() {
+  const operator = document.getElementById("operatorSelect").value;
+  const container = document.getElementById("plansContainer");
+  container.innerHTML = "";
+
+  const filtered = operator === "all" ? PLANS : PLANS.filter(p=>p.operator===operator);
+  filtered.forEach(plan=>{
+    const card = document.createElement("div");
+    card.className = "bg-white p-6 rounded-xl shadow";
+    card.innerHTML = `
+      <h3 class="text-xl font-bold mb-2">₹${plan.price}</h3>
+      <p class="text-sm text-gray-600 mb-1">${plan.operator}</p>
+      <p class="text-sm">${plan.data}</p>
+      <p class="text-sm mb-4">${plan.validity}</p>
+      <button onclick="goToPayment(${plan.id})"
+        class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">
+        Recharge Now
+      </button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function goToPayment(planId) {
+  const plan = PLANS.find(p => p.id === planId);
+  if(!plan) return;
+  window.location.href = `payment.html?amount=${plan.price}&operator=${plan.operator}&planId=${plan.id}`;
+}
+
+renderPlans();
+</script>
+
+</body>
+</html>

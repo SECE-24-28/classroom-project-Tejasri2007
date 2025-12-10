@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Recharge History</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/script.js"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-yellow-50 to-white">
+
+<script>
+if(!sessionStorage.getItem("loggedUser")) window.location.href="index.html";
+</script>
+
+<header class="bg-indigo-700 text-white">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<h1 class="text-xl font-bold">RechargeKart</h1>
+<nav class="space-x-4 text-sm">
+  <a href="recharge.html" class="hover:underline">Home</a>
+  <a href="plans.html" class="hover:underline">Plans</a>
+  <a href="discounts.html" class="hover:underline">Discounts</a>
+  <a href="#" onclick="sessionStorage.clear(); location.href='index.html'">Logout</a>
+</nav>
+</div>
+</header>
+
+<main class="container mx-auto px-4 py-8 max-w-3xl">
+<h2 class="text-2xl font-bold mb-4">Recharge History</h2>
+<div class="space-y-4" id="historyList"></div>
+<button onclick="clearHistory()" class="mt-6 bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">Clear History</button>
+</main>
+
+<script>renderHistory();</script>
+</body>
+</html>
